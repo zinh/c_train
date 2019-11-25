@@ -9,15 +9,16 @@ int strindex(char line[], char searchfor[], int direction);
 
 int
 main(int argc, char **argv){
-  char line[MAXLINE];
-  int len;
+  char *line;
+  size_t *linecap;
+  ssize_t len;
   if (argc == 0) {
     printf("Not enough argument. Pattern: a.out <string>");
     return 1;
   }
   char *searchfor = argv[1];
   
-  while((len = get_line(line, MAXLINE)) > 0){
+  while((len = getline(&line, linecap, stdin)) > 0){
     int pos;
     if ((pos = strindex(line, searchfor, RIGHT)) >= 0)
       printf("%d: %s\n", pos, line);
