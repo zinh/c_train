@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+double pow(double, double);
+
 int
 ctoi(const char c) {
   if (c >= '0' && c <= '9')
@@ -21,16 +23,32 @@ atof(char s[]){
     start_pos++;
   }
 
-  for (i = start_pos; s[i] != '\0' && s[i] != '.'; i++) {
+  for (i = start_pos; s[i] != '\0' && s[i] != '.' && s[i] != 'e'; i++) {
     result = result  * 10 + ctoi(s[i]);
   }
 
   if (s[i] == '.'){
     double p = 0.1;
-    for (int j = i + 1; s[j] != '\0'; j++){
-      result = result + ctoi(s[j]) * p;
+    for (++i; s[i] != '\0' && s[i] != 'e'; i++){
+      result = result + ctoi(s[i]) * p;
       p = p / 10;
     }
+  }
+
+  if (s[i] == 'e') {
+    int exp = 0;
+    int exp_sign = 1;
+    start_pos = i + 1;
+    if (s[i + 1] == '-'){
+      start_pos = i + 2;
+      exp_sign = -1;
+    } else if (s[i + 1] == '+') {
+      start_pos = i + 2;
+    }
+    for (int j = start_pos; s[j] != '\0'; j++) {
+      exp = exp * 10 + ctoi(s[j]);
+    }
+    result = pow(result, exp_sign * exp);
   }
 
   return result;
