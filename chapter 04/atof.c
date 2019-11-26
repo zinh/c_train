@@ -48,7 +48,7 @@ atof(char s[]){
     for (int j = start_pos; s[j] != '\0'; j++) {
       exp = exp * 10 + ctoi(s[j]);
     }
-    result = pow(result, exp_sign * exp);
+    result = result * pow(10, exp_sign * exp);
   }
 
   return result;
