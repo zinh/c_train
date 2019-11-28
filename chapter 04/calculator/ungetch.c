@@ -1,6 +1,5 @@
-#include <stdio.h>
-
 #include "ungetch.h"
+
 #define BUFSIZE 100
 
 int buf[BUFSIZE];

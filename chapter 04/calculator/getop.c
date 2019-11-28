@@ -14,10 +14,18 @@ int getop(char s[]) {
     while (isdigit(s[++i] = c = getch()))
       ;
   if (c == '.')
-    while (isdigit(s[++i] = c = getch()))
+    while(isdigit(s[++i] = c = getch()))
       ;
   s[i] = '\0';
   if (c != EOF)
     ungetch(c);
   return NUMBER;
 }
+
+//int
+//main() {
+//  char s[10];
+//  int type = getop(s);
+//  printf("%s\n", type);
+//  return 0;
+//}

@@ -14,7 +14,7 @@ void push(float f){
 
 float pop(){
   if (sp > 0) {
-    return val[sp--];
+    return val[--sp];
   } else {
     printf("Error: Empty stack\n");
     return 0.0;

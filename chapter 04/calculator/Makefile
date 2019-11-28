@@ -2,7 +2,7 @@ calc: main.o stack.o getop.o ungetch.o
 	cc -o calc main.o stack.o getop.o ungetch.o
 
 main.o: main.c
-	cc -c main.c
+	cc -g -c main.c
 
 stack.o: stack.c stack.h
 	cc -c stack.c
