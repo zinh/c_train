@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "stack.h"
+#include "getop.h"
+
 #define MAXOP 100
 #define NUMBER 0 // signal a number
-
-void push(double f);
-double pop();
-int getop(char[]);
 
 int
 main(){
